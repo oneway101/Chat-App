@@ -1,7 +1,10 @@
 #sidebar-wrapper {
-    position: fixed;
+    position: absolute;
     width: 250px;
     height: 100%;
-    background: black;
+    background: pink;
 }
 
+#chat-room-wrapper {
+    margin-left: 250px;
+}

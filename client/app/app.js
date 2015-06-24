@@ -12,8 +12,8 @@ angular.module('chatApp', [
 
     $locationProvider.html5Mode(true);
 
-    $stateProvider.state('chat', {
-        url: '/',
+    $stateProvider.state('room', {
+        url: '/room',
         templateUrl: 'app/templates/chat.html',
         controller: 'chat.controller'
       });
@@ -26,7 +26,14 @@ angular.module('chatApp')
     var rooms = $firebaseArray(fireRef);
 
     return{
-      all:rooms
+      all:rooms,
+
+      createRoom:function(roomName){
+        rooms.$add({
+          name: 'Rooooom'
+        })
+        rooms.$save(roomName);
+      }
     }
 
 }]);

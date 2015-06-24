@@ -28,27 +28,27 @@
 
     <!-- Add your site or application content here -->
     <div class="container-fluid">
-
+      <div class="row">
         <!-- Sidebar -->
-        <div class="row" id="sidebar-wrapper">
-            <ul class="sidebar-nav col-md-2">
-                <li class="chat-rooms">
-                    <a href="#">Room1</a>
-                </li>
+        <div id="sidebar-wrapper" ng-controller="room.controller">
+          <h1>Bloc Chat</h1>
+          <button role="button" ng-click="">New Room</button>
+            <ul class="sidebar-nav" ng-repeat="room in rooms" ng-model="room.roomId">
                 <li>
-                    <a href="#">Room2</a>
+                    <a ui-sref="room">{{room.roomId}}</a> 
                 </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div class="col-md-10" id="page-content-wrapper">
+        <!-- Chat Content-->
+        <div ui-view>
         </div>
-        <!-- /#page-content-wrapper -->
 
+      </div>
+      <!-- /.row -->
     </div>
-    <!-- /#wrapper -->
+    <!-- /.container-fluid -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -85,6 +85,7 @@
         <script src="app/app.js"></script>
           <!-- injector:js -->
           <script src="app/scripts/chat.controller.js"></script>
+          <script src="app/scripts/room.controller.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->

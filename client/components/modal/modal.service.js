@@ -24,7 +24,7 @@ angular.module('chatApp')
 
     // Public API here
     return {
-
+      
       /* Confirmation modals */
       confirm: {
 

@@ -1,16 +1,15 @@
 var chatApp = angular.module('chatApp');
 
-chatApp.controller('room.controller',function($scope,$firebaseArray,Room) {
-	var allrooms = [
-		{ roomId: 'Room1'},{ roomId: 'Room2'},{ roomId: 'Room3'}
-	];
-	$scope.rooms = allrooms;
-	
-	$scope.createRoom = function(room){
-		Room.createRoom(room);
+chatApp.controller('room.controller',function($scope,$firebaseArray,Room, $modal) {
+	Room.roomList().then(function(rooms){
+		$scope.rooms = rooms;
+	})
 
+	$scope.openModal = function(){
+		$modal.open({
+   		templateUrl: 'components/modal/modal.html',
+   		controller: 'modal.controller'
+		});
 	};
-
-
 
 });

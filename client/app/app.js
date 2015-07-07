@@ -4,7 +4,8 @@ angular.module('chatApp', [
   'ngCookies',
   'ngResource',
   'firebase',
-  'ui.router'
+  'ui.router',
+  'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
@@ -26,13 +27,15 @@ angular.module('chatApp')
     var rooms = $firebaseArray(fireRef);
 
     return{
-      all:rooms,
+      roomList: function(){
+          return rooms.$loaded();
+      },
 
-      createRoom:function(roomName){
+      createRoom:function(room){
         rooms.$add({
-          name: 'Rooooom'
+          name: room.name
         })
-        rooms.$save(roomName);
+        rooms.$save(room);
       }
     }
 

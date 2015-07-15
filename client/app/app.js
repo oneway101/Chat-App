@@ -5,7 +5,8 @@ angular.module('chatApp', [
   'ngResource',
   'firebase',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngCookies'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
@@ -13,30 +14,23 @@ angular.module('chatApp', [
 
     $locationProvider.html5Mode(true);
 
-    $stateProvider.state('room', {
+    /*$stateProvider.state('room', {
         url: '/room',
         templateUrl: 'app/templates/chat.html',
         controller: 'chat.controller'
-      });
-  });
+      });*/
+  })
+  
+  .run(['$cookies', '$modal', function($cookies, $modal){
 
-angular.module('chatApp')
-  .factory('Room',['$firebaseArray','$rootScope', function($firebaseArray,$rootScope){
-
-    var fireRef = new Firebase ("https://real-time-chat-angular.firebaseio.com/");
-    var rooms = $firebaseArray(fireRef);
-
-    return{
-      roomList: function(){
-          return rooms.$loaded();
-      },
-
-      createRoom:function(room){
-        rooms.$add({
-          name: room.name
-        })
-        rooms.$save(room);
-      }
+    if (!$cookies.blocChatCurrentUser || $cookies.blocChatCurrentUser === '' ) {
+        // Do something to allow users to set their username
+        $modal.open({
+          templateUrl: '/app/templates/username.modal.html',
+          controller: 'username.controller',
+          size: 'sm'
+        });
     }
 
-}]);
+  }]);
+

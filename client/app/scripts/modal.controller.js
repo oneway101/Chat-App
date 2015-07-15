@@ -1,7 +1,9 @@
-angular.module('chatApp').controller('modal.controller', function ($scope,Room, $modalInstance) {
+var chatAppModal = angular.module('chatApp');
 
-  $scope.ok = function(room) {
-    Room.createRoom(room);
+chatAppModal.controller('createRoom.controller', function ($scope,Room, $modalInstance) {
+
+  $scope.createRoom = function(newRoomName){
+    Room.createRoom(newRoomName);
     $modalInstance.close();
   };
 
@@ -9,6 +11,20 @@ angular.module('chatApp').controller('modal.controller', function ($scope,Room, 
     $modalInstance.dismiss('cancel');
   };
 
+});
 
+
+chatAppModal.controller('username.controller', function ($scope,Room, $modalInstance, $cookies) {
+
+  $scope.setUsername = function(newCurrentUser) {
+
+      modalInstance.result.then(function(newCurrentUser) {
+        $cookies.blocChatCurrentUser == newCurrentUser;
+        Room.setUser(newCurrentUser);
+       });
+      
+      $modalInstance.close();
+
+  }
 
 });

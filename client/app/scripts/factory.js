@@ -10,27 +10,44 @@ angular.module('chatApp')
       },
 
       createRoom:function(newRoomName){
-        rooms.$add({
-          name: newRoomName
-        });
-        rooms.$save(newRoomName);
+        var newRoom = {
+          name: newRoomName,
+          messages: []
+        };
+        rooms.$add(newRoom);
+        rooms.$save(newRoom);
       },
 
-      setUser:function(newCurrentUser){
+      /*setUser:function(newCurrentUser){
         rooms.$add({
           username: newCurrentUser
         });
         rooms.$save(newCurrentUser);
+      },*/
+
+      sendMessage: function(room, message){
+        room.messages.$add(message);
+        room.messages.$save(message);
       },
 
-      messages: function(){
-        /*rooms.messages.$add({
-        username: username,
-        sentAt: "current time",
-        content: "content"
-        });*/
+      getMessages: function(roomId){
+
       }
 
     }
 
+
 }]);
+
+angular.module('chatApp')
+.factory('Message', ['$firebase', function($firebase) {
+
+  var firebaseRef = new Firebase("https://real-time-chat-angular.firebaseio.com/");
+  var messages = $firebase(firebaseRef.child('messages')).$asArray();;
+
+  return {
+    send: function(newMessage) {
+      // Send method logic
+    }
+  }
+}])

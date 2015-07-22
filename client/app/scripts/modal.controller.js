@@ -18,12 +18,13 @@ chatAppModal.controller('username.controller', function ($scope,Room, $modalInst
 
   $scope.setUsername = function(newCurrentUser) {
 
-      modalInstance.result.then(function(newCurrentUser) {
+      /*modalInstance.result.then(function(newCurrentUser) {
         $cookies.blocChatCurrentUser == newCurrentUser;
+        console.log($cookies.blocChatCurrentUser);
         Room.setUser(newCurrentUser);
-       });
+       });*/
       
-      $modalInstance.close();
+      $modalInstance.close(newCurrentUser);
 
   }
 

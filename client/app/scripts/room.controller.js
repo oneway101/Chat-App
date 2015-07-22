@@ -12,9 +12,23 @@ chatApp.controller('room.controller',function($scope,$firebaseArray,Room, $modal
 		});
 	};
 
-	/*var newMessage = {
+	$scope.setCurrentRoom = function(room){
+		$scope.currentRoom = room;
+      	$scope.messages = Room.getMessages($scope.currentRoom.$id)
+
+	};
+
+});
+
+chatApp.controller('chat.controller',function($stateParams, $scope,$firebaseArray,Room, $modal, $cookies) {
+	console.log($stateParams);
+	$scope.sendMessage = function(message){
+		var newMessage = {
           userName: $cookies.blocChatCurrentUser,
-          content: $scope.newMessage.content,
+          content: message,
           createdAt: new Date()
-        }*/
+        }
+		Room.sendMessage($scope.currentRoom, newMessage);
+	};
+
 });

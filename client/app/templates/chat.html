@@ -1,5 +1,16 @@
 <div id="chat-room-wrapper">
-	<div class="container-fluid">
-		<h2>Room1 Chat content</h2>
-	</div>
-</div>
+  <div class="container-fluid">
+    <h2>Chat content</h2>
+  </div>
+  
+  <div ng-repeat="message in messages" ng-model="message">
+    <p>{{message.content}}</p>
+  </div>
+
+  <div class="message-input">
+    <div class="input-group">
+      <input type="text" ng-model="message" class="form-control"/>
+      <span type="button" class="btn btn-primary input-group-addon" ng-click="sendMessage(message)">Send</span>
+    </div>
+  </div>
+</div><!-- #chat-room-wrapper -->

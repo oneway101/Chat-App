@@ -14,22 +14,29 @@ angular.module('chatApp', [
 
     $locationProvider.html5Mode(true);
 
-    /*$stateProvider.state('room', {
-        url: '/room',
+    $stateProvider.state('chatroom', {
+        url: '/chatroom/:id',
         templateUrl: 'app/templates/chat.html',
         controller: 'chat.controller'
-      });*/
+      });
   })
   
-  .run(['$cookies', '$modal', function($cookies, $modal){
+  .run(['$cookies', '$modal', function($cookies, $modal, Room){
 
     if (!$cookies.blocChatCurrentUser || $cookies.blocChatCurrentUser === '' ) {
         // Do something to allow users to set their username
-        $modal.open({
+        var modalInstance = $modal.open({
           templateUrl: '/app/templates/username.modal.html',
           controller: 'username.controller',
           size: 'sm'
         });
+
+        modalInstance.result.then(function(newCurrentUser) {
+        $cookies.blocChatCurrentUser = newCurrentUser;
+        console.log($cookies.blocChatCurrentUser);
+        //Room.setUser(newCurrentUser);
+
+       });
     }
 
   }]);

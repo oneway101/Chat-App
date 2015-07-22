@@ -33,32 +33,17 @@
         <div id="sidebar-wrapper" ng-controller="room.controller">
           <h1>Bloc Chat</h1>
           <button role="button" ng-click="openModal()">New Room</button>
-            <ul class="sidebar-nav" ng-repeat="room in rooms" ng-model="room.name">
+            <ul class="sidebar-nav" ng-repeat="room in rooms">
                 <li>
-                    <a ng-click="">{{room.name}}</a> 
+                    <a ui-sref="chatroom({ id: room.$id })">{{room.name}}</a> 
                 </li>
             </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+        </div><!-- /#sidebar-wrapper -->
 
         <!-- Chat Content-->
-        <div id="chat-room-wrapper">
-          <div class="container-fluid">
-            <h2>Chat content</h2>
-          </div>
-          <div ng-model="message.content">
-            <p>{{message.content}}</p>
-          </div>
-          <div class="message-input">
-            <input type="text" ng-model="message" />
-            <span type="button" class="btn btn-primary" ng-click="send(message)" >Send</span>
-          </div>
-        </div>
-
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
+        <div ui-view></div>
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>

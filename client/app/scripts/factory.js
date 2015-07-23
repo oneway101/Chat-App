@@ -18,16 +18,9 @@ angular.module('chatApp')
         rooms.$save(newRoom);
       },
 
-      /*setUser:function(newCurrentUser){
-        rooms.$add({
-          username: newCurrentUser
-        });
-        rooms.$save(newCurrentUser);
-      },*/
-
-      sendMessage: function(room, message){
-        room.messages.$add(message);
-        room.messages.$save(message);
+      sendMessage: function(roomId, newMessage){
+        rooms.roomId.$add({messages: newMessage});
+        rooms.roomId.$save({messages: newMessage});
       },
 
       getMessages: function(roomId){
@@ -39,15 +32,3 @@ angular.module('chatApp')
 
 }]);
 
-angular.module('chatApp')
-.factory('Message', ['$firebase', function($firebase) {
-
-  var firebaseRef = new Firebase("https://real-time-chat-angular.firebaseio.com/");
-  var messages = $firebase(firebaseRef.child('messages')).$asArray();;
-
-  return {
-    send: function(newMessage) {
-      // Send method logic
-    }
-  }
-}])

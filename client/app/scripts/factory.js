@@ -18,17 +18,19 @@ angular.module('chatApp')
         rooms.$save(newRoom);
       },
 
-      sendMessage: function(roomId, newMessage){
-        rooms.roomId.$add({messages: newMessage});
-        rooms.roomId.$save({messages: newMessage});
+      getMessages: function(roomId){
+        var fireRef = new Firebase ("https://real-time-chat-angular.firebaseio.com/" + roomId + '/messages/');
+        return $firebaseArray(fireRef);
       },
 
-      getMessages: function(roomId){
-
+      sendMessage: function(roomId, newMessage){
+        var messages = this.getMessages(roomId);
+        // console.log(rooms);
+        messages.$add(newMessage);
+        // rooms[roomId].$save({messages: newMessage});
       }
 
     }
 
 
 }]);
-

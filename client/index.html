@@ -31,13 +31,19 @@
       <div class="row">
         <!-- Sidebar -->
         <div id="sidebar-wrapper" ng-controller="room.controller">
-          <h1>Bloc Chat</h1>
-          <button role="button" ng-click="openModal()">New Room</button>
-            <ul class="sidebar-nav" ng-repeat="room in rooms">
+          <div class="chat-title">
+            <h1>Chat</h1>
+            <button type="button" ng-click="openModal()" class="btn btn-default">New Room</button>
+          </div>
+          <div class="room-list-wrapper" ng-repeat="room in rooms">
+            <ul>
                 <li>
-                    <a ui-sref="chatroom({ id: room.$id })">{{room.name}}</a> 
+                    <h3>
+                      <a ui-sref="chatroom({ id: room.$id })">{{room.name}}</a>
+                    </h3> 
                 </li>
             </ul>
+          </div>
         </div><!-- /#sidebar-wrapper -->
 
         <!-- Chat Content-->
@@ -83,7 +89,6 @@
           <script src="app/scripts/factory.js"></script>
           <script src="app/scripts/modal.controller.js"></script>
           <script src="app/scripts/room.controller.js"></script>
-          <script src="app/scripts/username.modal.controller.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

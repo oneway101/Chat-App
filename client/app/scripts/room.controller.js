@@ -21,14 +21,16 @@ chatApp.controller('room.controller',function($scope,$firebaseArray,Room, $modal
 });
 
 chatApp.controller('chat.controller',function($stateParams, $scope,$firebaseArray,Room, $modal, $cookies) {
-	console.log($scope.currentRoom);
 	$scope.sendMessage = function(message){
+		
 		var newMessage = {
           userName: $cookies.blocChatCurrentUser,
           content: message,
           createdAt: new Date()
         }
-		Room.sendMessage($scope.currentRoom, newMessage);
+		Room.sendMessage($stateParams.id, newMessage);
 	};
+
+	$scope.messages = Room.getMessages($stateParams.id);
 
 });

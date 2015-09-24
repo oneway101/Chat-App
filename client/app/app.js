@@ -28,7 +28,7 @@ angular.module('chatApp', [
         var modalInstance = $modal.open({
           templateUrl: '/app/templates/username.modal.html',
           controller: 'username.controller',
-          size: 'sm'
+          size: 'lg'
         });
 
         modalInstance.result.then(function(newCurrentUser) {

@@ -16,7 +16,7 @@ angular.module('chatApp', [
 
     $stateProvider.state('chatroom', {
         url: '/chatroom/:id',
-        templateUrl: 'app/templates/chat.html',
+        templateUrl: 'app/templates/chat.display.html',
         controller: 'chat.controller'
       });
   })

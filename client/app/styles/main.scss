@@ -6,12 +6,13 @@
 }
 
 #chat-room-wrapper {
-    margin-left: 250px;
+    margin-left: 300px;
+    height: 100%;
 }
 
 .chat-title{
 	display: block;
-	margin-bottom: 20px; 
+	margin-bottom: 10px; 
 	h1 {
 	display: inline-block;
 	padding-left: 20px;
@@ -43,4 +44,20 @@
     position:fixed;
     bottom: 0px;
     margin: 10px;
+}
+.chat-room-name{
+	margin-bottom: 20px;
+}
+.chat-bubble{
+	background-color: #F9F7F4;
+	padding: 20px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	width: 60%;
+	display: block;
+	float: right;
+	clear: right;
+	p{
+		word-wrap: break-word;
+	}
 }

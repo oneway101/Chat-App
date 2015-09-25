@@ -1,0 +1,20 @@
+<div id="chat-room-wrapper">
+  <div class="container-fluid">
+    <h2 class="chat-room-name">{{room.name}}</h2>
+  </div>
+  
+    <div class="chatRoom-bg">
+      <div class="chat-bubble" ng-repeat="message in messages">
+        <h5>{{message.userName}}:</h5>
+        <p>{{message.content}}</p>
+        <p>{{message.createdOn}}</p>
+      </div>
+    </div>
+
+  <div class="message-input">
+    <div class="input-group input-group-lg">
+      <input type="text" ng-model="message" class="form-control"/>
+      <span type="button" class="btn btn-primary input-group-addon scrollDown" ng-click="sendMessage(message)">Send</span>
+    </div>
+  </div>
+</div><!-- #chat-room-wrapper -->

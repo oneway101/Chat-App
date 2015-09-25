@@ -1,5 +1,10 @@
+html{
+}
+a, a:link, a:hover, a:active{
+	text-decoration: none;
+}
 #sidebar-wrapper {
-    position: absolute;
+    position: fixed;
     width: 300px;
     height: 100%;
     background: pink;
@@ -32,11 +37,8 @@
 	ul{
 		list-style-type: none;
 	}
-	a{
-		text-decoration: none;
-	}
 }
-.room-list-wrapper:hover{
+.room-list-wrapper:hover, .activeRoom{
 	background-color: #FFD3E0;
 }
 
@@ -46,14 +48,26 @@
     margin: 10px;
 }
 .chat-room-name{
+	position: fixed;
 	margin-bottom: 20px;
+}
+.chatRoom-bg{
+	background-color: #FDD9E2;
+	position: absolute;
+	right: 0;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    padding-bottom: 50px;
+
+
 }
 .chat-bubble{
 	background-color: #F9F7F4;
-	padding: 20px;
+	padding: 10px;
 	margin-bottom: 20px;
 	margin-right: 20px;
-	width: 60%;
+	width: 500px;
 	display: block;
 	float: right;
 	clear: right;

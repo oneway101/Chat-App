@@ -30,19 +30,21 @@
     <div class="container-fluid">
       <div class="row">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper" ng-controller="room.controller">
+        <div id="sidebar-wrapper" ng-controller="rooms.controller">
           <div class="chat-title">
             <h1>Chat</h1>
             <button type="button" ng-click="openModal()" class="btn btn-default">New Room</button>
           </div>
-          <div class="room-list-wrapper" ng-repeat="room in rooms">
-            <ul>
-                <li>
-                    <h4>
-                      <a ui-sref="chatroom({ id: room.$id })">{{room.name}}</a>
-                    </h4> 
-                </li>
-            </ul>
+          <div class="room-list-wrapper" ng-repeat="room in rooms" ng-class="{'activeRoom': selectedRoom}">
+            <a ui-sref="chatroom({ id: room.$id })" ng-click="selectedRoom">
+              <ul>
+                  <li>
+                      <h4>
+                        {{room.name}}
+                      </h4> 
+                  </li>
+              </ul>
+            </a>
           </div>
         </div><!-- /#sidebar-wrapper -->
 
@@ -86,9 +88,9 @@
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/scripts/chatRoom.controller.js"></script>
           <script src="app/scripts/factory.js"></script>
           <script src="app/scripts/modal.controller.js"></script>
-          <script src="app/scripts/room.controller.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

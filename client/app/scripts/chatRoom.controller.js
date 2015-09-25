@@ -1,6 +1,6 @@
 var chatApp = angular.module('chatApp');
 
-chatApp.controller('room.controller',function($scope,$firebaseArray,Room, $modal, $cookies) {
+chatApp.controller('rooms.controller',function($scope,$firebaseArray,Room, $modal, $cookies) {
 	Room.roomList().then(function(rooms){
 		$scope.rooms = rooms;
 	});
@@ -14,23 +14,31 @@ chatApp.controller('room.controller',function($scope,$firebaseArray,Room, $modal
 
 	$scope.setCurrentRoom = function(room){
 		$scope.currentRoom = room;
+		$scope.selectedRoom = true;
       	$scope.messages = Room.getMessages($scope.currentRoom)
 
 	};
-
 });
 
-chatApp.controller('chat.controller',function($stateParams, $scope,$firebaseArray,Room, $modal, $cookies) {
+chatApp.controller('chatRoom.controller',function($stateParams, $scope, $firebaseArray,Room, $modal, $cookies) {
 	$scope.sendMessage = function(message){
 		
 		var newMessage = {
           userName: $cookies.blocChatCurrentUser,
           content: message,
-          createdAt: new Date()
+          createdOn: new Date().getTime()
         }
+        
 		Room.sendMessage($stateParams.id, newMessage);
+		console.log(newMessage);
+		$scope.message = '';
 	};
 
 	$scope.messages = Room.getMessages($stateParams.id);
+	$scope.room = Room.getRoom($stateParams.id);
 
+	$('.scrollDown').click(function () {
+    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    return false;
+	});
 });

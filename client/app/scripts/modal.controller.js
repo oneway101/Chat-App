@@ -1,6 +1,6 @@
 var chatAppModal = angular.module('chatApp');
 
-chatAppModal.controller('createRoom.controller', function ($scope,Room, $modalInstance) {
+chatAppModal.controller('createRoom.controller', function ($scope, Room, $modalInstance) {
 
   $scope.createRoom = function(newRoomName){
     Room.createRoom(newRoomName);
@@ -14,17 +14,16 @@ chatAppModal.controller('createRoom.controller', function ($scope,Room, $modalIn
 });
 
 
-chatAppModal.controller('username.controller', function ($scope,Room, $modalInstance, $cookies) {
+chatAppModal.controller('username.controller', function ($scope, Room, $modalInstance, $cookies) {
 
   $scope.setUsername = function(newCurrentUser) {
 
-      /*modalInstance.result.then(function(newCurrentUser) {
-        $cookies.blocChatCurrentUser == newCurrentUser;
+    /*modalInstance.result.then(function(newCurrentUser) {
+      $cookies.blocChatCurrentUser == newCurrentUser;
         console.log($cookies.blocChatCurrentUser);
-        Room.setUser(newCurrentUser);
-       });*/
-      
-      $modalInstance.close(newCurrentUser);
+      });
+    */
+    $modalInstance.close(newCurrentUser);
 
   }
 

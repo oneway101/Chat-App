@@ -16,8 +16,8 @@ angular.module('chatApp', [
 
     $stateProvider.state('chatroom', {
         url: '/chatroom/:id',
-        templateUrl: 'app/templates/chat.display.html',
-        controller: 'chat.controller'
+        templateUrl: 'app/templates/chatRoom.html',
+        controller: 'chatRoom.controller'
       });
   })
   
@@ -34,7 +34,6 @@ angular.module('chatApp', [
         modalInstance.result.then(function(newCurrentUser) {
         $cookies.blocChatCurrentUser = newCurrentUser;
         console.log($cookies.blocChatCurrentUser);
-        //Room.setUser(newCurrentUser);
 
        });
     }

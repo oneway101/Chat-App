@@ -1,5 +1,5 @@
 angular.module('chatApp')
-  .factory('Room',['$firebaseArray','$rootScope', function($firebaseArray,$rootScope){
+  .factory('Room',['$firebaseArray', '$firebaseObject', '$rootScope', function($firebaseArray, $firebaseObject,$rootScope){
 
     var fireRef = new Firebase ("https://real-time-chat-angular.firebaseio.com/");
     var rooms = $firebaseArray(fireRef);
@@ -23,11 +23,14 @@ angular.module('chatApp')
         return $firebaseArray(fireRef);
       },
 
+      getRoom: function(roomId){
+        var fireRef = new Firebase ("https://real-time-chat-angular.firebaseio.com/" + roomId);
+        return $firebaseObject(fireRef);
+      },
+
       sendMessage: function(roomId, newMessage){
         var messages = this.getMessages(roomId);
-        // console.log(rooms);
         messages.$add(newMessage);
-        // rooms[roomId].$save({messages: newMessage});
       }
 
     }

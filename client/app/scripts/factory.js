@@ -17,6 +17,9 @@ angular.module('chatApp')
         rooms.$add(newRoom);
         rooms.$save(newRoom);
       },
+      deleteRoom: function(room){
+        rooms.$remove(room);
+      },
 
       getMessages: function(roomId){
         var fireRef = new Firebase ("https://real-time-chat-angular.firebaseio.com/" + roomId + '/messages/');
@@ -32,7 +35,6 @@ angular.module('chatApp')
         var messages = this.getMessages(roomId);
         messages.$add(newMessage);
       }
-
     }
 
 

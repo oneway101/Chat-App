@@ -35,15 +35,14 @@
             <h1>Chat</h1>
             <button type="button" ng-click="openModal()" class="btn btn-default">New Room</button>
           </div>
-          <div class="room-list-wrapper" ng-repeat="room in rooms" ng-class="{'activeRoom': selectedRoom}">
-            <a ui-sref="chatroom({ id: room.$id })" ng-click="selectedRoom">
-              <ul>
-                  <li>
-                      <h4>{{room.name}}</h4> 
-                  </li>
-              </ul>
-            </a>
-          </div>
+            <ul class="room-list-wrapper" ng-repeat="room in rooms" ng-class="{'activeRoom': selectedRoom}">
+                <li>
+                  <a ui-sref="chatroom({ id: room.$id })" ng-click="selectedRoom">
+                    <h4>{{room.name}}</h4>
+                  </a>
+                  <a><i class="glyphicon glyphicon-remove" ng-click="deleteRoom(room)"></i></a>
+                </li>
+            </ul>
         </div><!-- /#sidebar-wrapper -->
         
         <!-- Chat Content-->

@@ -40,8 +40,3 @@ angular.module('chatApp', [
 
   }]);
 
-$('.scrollDown').click(function () {
-    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-    return false;
-  });
-

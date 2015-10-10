@@ -35,10 +35,15 @@ a, a:link, a:hover, a:active{
 
 .room-list-wrapper {
 	background-color: floralwhite;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	ul{
-		list-style-type: none;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-right: 15px;
+	list-style-type: none;
+	margin-bottom: 0;
+	h4 { display: inline;}
+	i {
+		float: right;
+		line-height: 1.5;
 	}
 }
 .room-list-wrapper:hover, .activeRoom{
@@ -66,7 +71,11 @@ a, a:link, a:hover, a:active{
 	width: 50px;
 	height: 50px;
 }
-
+.chat-bubble-wrapper{
+	width: 500px;
+	background-color: blue;
+	margin-bottom: 50px;
+}
 .chat-bubble{
 	background-color: #F9F7F4;
 	padding: 10px;

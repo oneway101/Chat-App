@@ -18,6 +18,10 @@ chatApp.controller('rooms.controller',function($scope,$firebaseArray,Room, $moda
       	$scope.messages = Room.getMessages($scope.currentRoom)
 
 	};
+
+	$scope.deleteRoom = function(room){
+		Room.deleteRoom(room);
+	}
 });
 
 chatApp.controller('chatRoom.controller',function($stateParams, $scope, $firebaseArray,Room, $modal, $cookies) {
@@ -36,4 +40,9 @@ chatApp.controller('chatRoom.controller',function($stateParams, $scope, $firebas
 
 	$scope.messages = Room.getMessages($stateParams.id);
 	$scope.room = Room.getRoom($stateParams.id);
+
+	$('.scrollDown').click(function () {
+    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    return false;
+  });
 });

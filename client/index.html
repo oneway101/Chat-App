@@ -39,18 +39,17 @@
             <a ui-sref="chatroom({ id: room.$id })" ng-click="selectedRoom">
               <ul>
                   <li>
-                      <h4>
-                        {{room.name}}
-                      </h4> 
+                      <h4>{{room.name}}</h4> 
                   </li>
               </ul>
             </a>
           </div>
         </div><!-- /#sidebar-wrapper -->
-
+        
         <!-- Chat Content-->
         <div ui-view></div>
       </div><!-- /.row -->
+      <div class="bg-wallpaper"></div>
     </div><!-- /.container-fluid -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

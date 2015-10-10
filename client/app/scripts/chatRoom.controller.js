@@ -36,9 +36,4 @@ chatApp.controller('chatRoom.controller',function($stateParams, $scope, $firebas
 
 	$scope.messages = Room.getMessages($stateParams.id);
 	$scope.room = Room.getRoom($stateParams.id);
-
-	$('.scrollDown').click(function () {
-    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
-    return false;
-	});
 });

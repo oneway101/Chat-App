@@ -17,6 +17,8 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
@@ -28,12 +30,15 @@
 
     <!-- Add your site or application content here -->
     <div class="container-fluid">
-      <div class="row">
+      <div class="row" ng-controller="rooms.controller">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper" ng-controller="rooms.controller">
+        <div id="sidebar-wrapper" ng-hide="hideRoomlists">
           <div class="chat-title">
-            <h1>Chat</h1>
-            <button type="button" ng-click="openModal()" class="btn btn-default">New Room</button>
+            <div class="hideMenu">
+              <a ng-click="hideMenu()"><i class="fa fa-angle-double-left"></i></a>
+            </div>
+            <a href="/"><img src="../assets/images/logo.png"></a>
+            <button type="button" ng-click="openModal()" class="btn btn-default">Create Room</button>
           </div>
             <ul class="room-list-wrapper" ng-repeat="room in rooms" ng-class="{'activeRoom': selectedRoom}">
                 <li>
@@ -44,7 +49,9 @@
                 </li>
             </ul>
         </div><!-- /#sidebar-wrapper -->
-        
+        <div class="showMenu" ng-show="hideRoomlists">
+          <a ng-click="showMenu()"><i class="fa fa-angle-double-right"></i></a>
+        </div>{{hideRoomlists}}
         <!-- Chat Content-->
         <div ui-view></div>
       </div><!-- /.row -->

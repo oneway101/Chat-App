@@ -14,6 +14,9 @@ angular.module('chatApp', [
 
     $locationProvider.html5Mode(true);
 
+    $stateProvider.state('home', {
+        url: '/',
+      });
     $stateProvider.state('chatroom', {
         url: '/chatroom/:id',
         templateUrl: 'app/templates/chatRoom.html',

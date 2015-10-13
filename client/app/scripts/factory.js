@@ -34,7 +34,12 @@ angular.module('chatApp')
       sendMessage: function(roomId, newMessage){
         var messages = this.getMessages(roomId);
         messages.$add(newMessage);
+      },
+
+      hideMenu: function(){
+        return true;
       }
+
     }
 
 

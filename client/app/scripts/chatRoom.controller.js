@@ -12,6 +12,16 @@ chatApp.controller('rooms.controller',function($scope,$firebaseArray,Room, $moda
 		});
 	};
 
+	$scope.hideMenu = function(){
+		//$("#sidebar-wrapper").hide();
+		$scope.hideRoomlists = true;
+	};
+
+	$scope.showMenu = function(){
+		//$("#sidebar-wrapper").show();
+		$scope.hideRoomlists = false;
+	};
+
 	$scope.setCurrentRoom = function(room){
 		$scope.currentRoom = room;
 		$scope.selectedRoom = true;

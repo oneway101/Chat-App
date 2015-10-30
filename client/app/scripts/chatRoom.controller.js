@@ -40,7 +40,7 @@ chatApp.controller('chatRoom.controller',function($stateParams, $scope, $firebas
 		var newMessage = {
           userName: $cookies.blocChatCurrentUser,
           content: message,
-          createdOn: new Date().getTime()
+          createdOn: new Date().toLocaleString()
         }
         
 		Room.sendMessage($stateParams.id, newMessage);

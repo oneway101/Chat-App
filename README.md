@@ -1,7 +1,7 @@
 ##Chat App
 Ghost Chat is a real-time chat application using Firebase and AngularJS.
 
-**Applicaiton URL:**
+**Applicaiton URL:** [Chat App](https://oneway-ghostchat.herokuapp.com/)
 
 ##Layout and Functionality
 
